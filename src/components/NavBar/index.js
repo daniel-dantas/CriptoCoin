@@ -1,4 +1,5 @@
 import React from 'react'
+import './style.css'
 
 const NavBar = (props) => {
     return (
@@ -7,7 +8,7 @@ const NavBar = (props) => {
                 <div className="nav-wrapper grey darken-4">
                     <div className="row">
                         <div className="col s12 m2 center">
-                            <a  href="/" className="brand-logo"><img id="logo" src={props.urlLogo}/></a>
+                            <a  href="/" className="brand-logo"><img id="logo"  src={props.urlLogo}/></a>
                         </div>
                         <div className="col s12 m10">
                             <a href="#" data-target="mobile-demo"  className="sidenav-trigger menu"><i className="material-icons">menu</i></a>
