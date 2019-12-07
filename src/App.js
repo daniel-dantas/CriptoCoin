@@ -7,7 +7,8 @@ import Footer from './components/Footer'
 const App = () => {
 
     const [links] = useState([
-        {caminho: '#', nome: 'Sobre'},
+        {caminho: '/searchMoeda', nome: 'Pesquisar Moeda'},
+        {caminho: '/sobre', nome: 'Sobre'},
     ])
 
     const [infFooter] = useState({
