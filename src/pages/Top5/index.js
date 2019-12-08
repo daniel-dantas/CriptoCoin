@@ -1,17 +1,18 @@
 import React, {useEffect} from 'react'
 import Moedas from '../../services/Moeda'
 
-const  top5 =  () => {
-    
+export default () => {
+
     useEffect(() => {
-        
         loadMoedas()
     })
     
     const loadMoedas = () => {
-        Moedas.read().then(moedas => {
+        Moedas.read().then(response => {
+            
+            let moedas = response.data.data
             moedas.map(moeda => {
-                console.log(moeda.id)
+                console.log(moeda.name)
             })
         }).catch( erro => {
             console.log(erro)
@@ -29,4 +30,3 @@ const  top5 =  () => {
     )
 }
 
-export default top5
