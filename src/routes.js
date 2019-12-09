@@ -13,9 +13,9 @@ const Routes = () => (
         <Switch>
             <Route exact path="/" component={()=> <Index />} />
             <Route exact path="/sobre" component={ () => <Sobre/>} />
-            <Route  exact path="/top5" component={() => <Top5/>} />
-            <Route  exact path="/searchMoeda" component={() => <SearchMoeda/>} />
-            <Route  exact path="/moedasEmAlta" component={() => <MoedasEmAlta/>} />
+            <Route exact path="/top5" component={() => <Top5/>} />
+            <Route exact path="/searchMoeda" component={() => <SearchMoeda/>} />
+            <Route exact path="/moedasEmAlta" component={() => <MoedasEmAlta/>} />
         </Switch>
     </BrowserRouter>
 )

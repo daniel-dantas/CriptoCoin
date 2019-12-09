@@ -28,13 +28,13 @@ class Index extends React.Component{
                 {/* Lista CardsLinks */}
                 <div className="row">
                     <div className="col s12 m4">
-                        <CardLink imagem={Top5} titulo="Top 5" informacao=""/>
+                        <CardLink imagem={Top5} titulo="Top 5" informacao="" link="/top5"/>
                     </div>
                     <div className="col s12 m4">
-                        <CardLink imagem={searchImage} titulo="Pesquisar Moeda" informacao=""/>
+                        <CardLink imagem={searchImage} titulo="Pesquisar Moeda" informacao="" link="/searchMoeda"/>
                     </div>
                     <div className="col s12 m4">
-                        <CardLink imagem={EmAltaImage} titulo="Moedas em alta" informacao=""/>
+                        <CardLink imagem={EmAltaImage} titulo="Moedas em alta" informacao="" link="/moedasEmAlta"/>
                     </div>
                 </div>
             </div>

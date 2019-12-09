@@ -10,7 +10,7 @@ const cardlink = (props) => {
                     <div className="card">
                         <div className="card-image">
                             <img id="imagem-link" src={props.imagem}/>
-                            <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">call_made</i></a>
+                            <a className="btn-floating halfway-fab waves-effect waves-light red" href={props.link}><i className="material-icons">call_made</i></a>
 
                         </div>
                         <div className="card-content grey darken-4"> 
