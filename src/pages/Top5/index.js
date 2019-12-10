@@ -22,11 +22,11 @@ export default () => {
     
     return (
         <div id="top5">
-            <center>
-                <div className="container">
-                    <CardContainer moedas={moedas}/>
-                </div>
-            </center>
+                <center>
+                    <div className="container">
+                        <CardContainer moedas={moedas}/>
+                    </div>
+                </center>
         </div>
     )
 }

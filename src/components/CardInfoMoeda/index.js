@@ -25,7 +25,7 @@ export default (props) => {
                                     
                                         <h5 className="green-text">
                                             {props.moeda.name}
-                                            <i className="material-icons green">arrow_upward</i>
+                                            <i className="material-icons">arrow_upward</i>
                                         </h5>
                                     
                                 )}</span>
