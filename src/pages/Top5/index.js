@@ -14,7 +14,7 @@ export default () => {
     const loadMoedas = () => {
         Moedas.read().then(response => {
             let moedas = response.data.data.slice(0, 5)
-            setMoedas({moedas: moedas})
+            setMoedas(moedas)
         }).catch( erro => {
             console.log(erro)
         })
@@ -27,7 +27,6 @@ export default () => {
                     Top 5
                 </h1>
                 <div className="container">
-                    dasds
                     <CardContainer moedas={moedas}/>
                 </div>
             </center>

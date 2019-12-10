@@ -6,14 +6,21 @@ let CardInfoMoeda = (props) => {
         <div id="cardInfoMoeda">
             <div className="row">
                 <div className="col s12">
-                    <div className="card">
-                        <div className="card-content">
-                            <span className="card-title">{props.moeda.name}</span>
+                    <div className="card grey darken-4">
+                        <div className="card-content white-text">
+                            <span className="card-title">
+                                {props.moeda.name}
+                                <div>{(props.moeda.changePercent24Hr < 0) ? (
+                                    <i className="small material-icons">arrow_downward</i>
+                                ) : (
+                                    <i className="small material-icons">arrow_upward</i>
+                                )}</div>
+                                </span>
                             {/* A informação abaixo pode mudar*/}
-                            <p>
-                                Aqui vai ficar a situação se o preço da ação caiu ou diminuiu
+                            <p> 
                                 <br/>
                                 Rank: {props.moeda.rank}
+                                <br/>
                                 Preço: R${props.moeda.priceUsd}
                             </p> 
                         </div>

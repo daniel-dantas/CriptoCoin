@@ -8,8 +8,7 @@ let card = (props) => {
         <div id="card">
             <div className="row">
                 <div className="col s12">
-                    {console.log(props.moedas.moedas)}
-                    {/* {props.moedas.moedas.map(moeda => (<CardInfoMoeda key={moeda.id} moeda={moeda}/>))} */}
+                    {props.moedas.map(moeda => (<CardInfoMoeda key={moeda.id} moeda={moeda}/>))}
                 </div>
             </div>
         </div>
