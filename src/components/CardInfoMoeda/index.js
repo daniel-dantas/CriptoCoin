@@ -5,8 +5,6 @@ import React from 'react'
 export default (props) => {
 
 
-
-
     return (
         <div id="cardInfoMoeda">
             <div className="row">
@@ -31,12 +29,12 @@ export default (props) => {
                                 )}</span>
                             
                             {/* A informação abaixo pode mudar*/}
-                            <p> 
+                            <h6> 
                                 <br/>
                                 Rank: {props.moeda.rank}
                                 <br/>
                                 Preço: ${props.moeda.priceUsd}
-                            </p> 
+                            </h6> 
                         </div>
                     </div>
                 </div>

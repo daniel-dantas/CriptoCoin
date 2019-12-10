@@ -9,7 +9,7 @@ const carrousel = (props) => {
                     {props.itens.map( item => {
                         return (
                             <li key={item.titulo}>
-                                <img src={item.imagem}/>
+                                <img src={props.imagem}/>
                                 <div className="caption center-align">
                                     <h3>{item.titulo}</h3>
                                     <h5 className="light grey-text text-lighten-3">

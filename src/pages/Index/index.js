@@ -1,4 +1,6 @@
 import React from 'react'
+import Moedas from '../../services/Moeda'
+
 // Componentes
 import CardLink from '../../components/CardLink'
 import Carrousel from '../../components/Carrousel'
@@ -12,18 +14,44 @@ class Index extends React.Component{
     constructor(){
         super()
         this.state = {
+            
             itens: [
-                {imagem: searchImage, titulo: 'TITULO', conteudo: 'CONTEUDO'}
-            ]
+                {titulo: 'TITULO', conteudo: 'CONTEUDO'}
+            ],
+            imagem: searchImage
+            
         }
     }
+
+    componentDidMount(){
+        this.filtrandoMoedas()
+    }
+
+
+    async filtrandoMoedas(){
+        await Moedas.read().then(response => {
+            let moedaEmAlta = response.data.data.filter(moeda => {return moeda.changePercent24Hr > 0})[0]
+            let moedaEmBaixa = response.data.data.filter(moeda => {return moeda.changePercent24Hr < 0})[0]
+            
+            this.setState({
+                itens: [
+                    {titulo: moedaEmAlta.name+' está em alta', conteudo: moedaEmAlta.name+' teve uma alta de '+moedaEmAlta.changePercent24Hr+'%'},
+                    {titulo: moedaEmBaixa.name+' está em baixa', conteudo: moedaEmAlta.name+' teve uma baixa de '+moedaEmBaixa.changePercent24Hr+'%'}
+                ]
+            })
+        }).catch( erro => {
+            console.log(erro)
+        })
+    }
+
 
     render(){
         return (
             <div className="grey darken-3">
                 {/* Carrousel */}
                 
-                <Carrousel itens={this.state.itens}/>
+
+                <Carrousel imagem={this.state.imagem} itens={this.state.itens}/>
 
                 {/* Lista CardsLinks */}
                 <div className="row">
