@@ -14,30 +14,26 @@ class Index extends React.Component{
     constructor(){
         super()
         this.state = {
-            
-            itens: [
-                {titulo: 'TITULO', conteudo: 'CONTEUDO'}
-            ],
+            moedaEmAlta: {titulo: 'TITULO 1', conteudo: 'CONTEUDO 2'},
+            moedaEmBaixa: {titulo: 'TITULO 2', conteudo: 'CONTEUDO 2'},
             imagem: searchImage
-            
         }
     }
 
-    componentDidMount(){
+    componentDidMount = () => {
         this.filtrandoMoedas()
     }
 
 
-    async filtrandoMoedas(){
-        await Moedas.read().then(response => {
-            let moedaEmAlta = response.data.data.filter(moeda => {return moeda.changePercent24Hr > 0})[0]
-            let moedaEmBaixa = response.data.data.filter(moeda => {return moeda.changePercent24Hr < 0})[0]
+    filtrandoMoedas = () => {
+        Moedas.read().then(response => {
+            let moedas = response.data.data
+            let moedaEmAlta = moedas.filter(moeda => {return moeda.changePercent24Hr > 0})[0]
+            let moedaEmBaixa = moedas.filter(moeda => {return moeda.changePercent24Hr < 0})[0]
             
             this.setState({
-                itens: [
-                    {titulo: moedaEmAlta.name+' está em alta', conteudo: moedaEmAlta.name+' teve uma alta de '+moedaEmAlta.changePercent24Hr+'%'},
-                    {titulo: moedaEmBaixa.name+' está em baixa', conteudo: moedaEmAlta.name+' teve uma baixa de '+moedaEmBaixa.changePercent24Hr+'%'}
-                ]
+                moedaEmAlta: {titulo: `${moedaEmAlta.name} está em alta`, conteudo: `${moedaEmAlta.name} teve um almento de ${moedaEmAlta.changePercent24Hr} %`},
+                moedaEmBaixa: {titulo: `${moedaEmBaixa.name} está em baixa`, conteudo: `${moedaEmBaixa.name} teve uma queda de ${moedaEmBaixa.changePercent24Hr}%`}
             })
         }).catch( erro => {
             console.log(erro)
@@ -49,9 +45,7 @@ class Index extends React.Component{
         return (
             <div className="grey darken-3">
                 {/* Carrousel */}
-                
-
-                <Carrousel imagem={this.state.imagem} itens={this.state.itens}/>
+                <Carrousel imagem={this.state.imagem} itens={[this.state.moedaEmAlta,this.state.moedaEmBaixa]}/>
 
                 {/* Lista CardsLinks */}
                 <div className="row">
