@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Moedas from '../../services/Moeda'
 import Container from '../../components/CardContainer'
+import CardInfoMoeda from '../../components/CardInfoMoeda'
 // Moedas em alta
 export default  () => {
     
@@ -24,7 +25,9 @@ export default  () => {
             <center>
                 <div className="row">
                     <div className="container">
-                        <Container moedas={moedas}/>
+                        <Container>
+                            {moedas.map(moeda => (<CardInfoMoeda key={moeda.id} moeda={moeda}/>))}
+                        </Container>
                     </div>
                 </div>
             </center>

@@ -32,7 +32,7 @@ class Index extends React.Component{
             let moedaEmBaixa = moedas.filter(moeda => {return moeda.changePercent24Hr < 0})[0]
             
             this.setState({
-                moedaEmAlta: {titulo: `${moedaEmAlta.name} está em alta`, conteudo: `${moedaEmAlta.name} teve um almento de ${moedaEmAlta.changePercent24Hr} %`},
+                moedaEmAlta: {titulo: `${moedaEmAlta.name} está em alta`, conteudo: `${moedaEmAlta.name} teve um aumento de ${moedaEmAlta.changePercent24Hr} %`},
                 moedaEmBaixa: {titulo: `${moedaEmBaixa.name} está em baixa`, conteudo: `${moedaEmBaixa.name} teve uma queda de ${moedaEmBaixa.changePercent24Hr}%`}
             })
         }).catch( erro => {

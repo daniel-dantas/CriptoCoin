@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import Moedas from '../../services/Moeda'
-import CardContainer from '../../components/CardContainer'
+import Container from '../../components/CardContainer'
+import CardInfoMoeda from '../../components/CardInfoMoeda'
 
 
 export default () => {
@@ -24,7 +25,9 @@ export default () => {
         <div id="top5">
                 <center>
                     <div className="container">
-                        <CardContainer moedas={moedas}/>
+                        <Container>
+                            {moedas.map(moeda => (<CardInfoMoeda key={moeda.id} moeda={moeda}/>))}
+                        </Container>
                     </div>
                 </center>
         </div>

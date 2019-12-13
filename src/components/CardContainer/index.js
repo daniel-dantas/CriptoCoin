@@ -4,11 +4,20 @@ import CardInfoMoeda from '../CardInfoMoeda'
 
 let card = (props) => {
 
+
+    const isCard = () => {
+        if(props.isCard){
+            return 'card grey darken-3'
+        }else{
+            return ''
+        }
+    }
+
     return (
         <div id="card">
             <div className="row">
-                <div className="col s12">
-                    {props.moedas.map(moeda => (<CardInfoMoeda key={moeda.id} moeda={moeda}/>))}
+                <div className={"col s12 "+isCard()}>
+                    {props.children}
                 </div>
             </div>
         </div>
