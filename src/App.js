@@ -19,7 +19,7 @@ const App = () => {
 
 
     return (
-        <div id="app" className="grey darken-2">
+        <div id="app" className="grey darken-3">
             <NavBar urlLogo={Logo} links={links}/>
             <Routes />
             <Footer 

@@ -21,12 +21,14 @@ class Index extends React.Component{
     }
 
     componentDidMount = () => {
-        this.filtrandoMoedas()
+        setInterval(() => {
+            this.filtrandoMoedas()
+        }, 2000)
     }
 
 
-    filtrandoMoedas = () => {
-        Moedas.read().then(response => {
+    filtrandoMoedas = async () => {
+        await Moedas.read().then(response => {
             let moedas = response.data.data
             let moedaEmAlta = moedas.filter(moeda => {return moeda.changePercent24Hr > 0})[0]
             let moedaEmBaixa = moedas.filter(moeda => {return moeda.changePercent24Hr < 0})[0]
@@ -48,6 +50,7 @@ class Index extends React.Component{
                 <Carrousel imagem={this.state.imagem} itens={[this.state.moedaEmAlta,this.state.moedaEmBaixa]}/>
 
                 {/* Lista CardsLinks */}
+
                 <div className="row">
                     <div className="col s12 m4">
                         <CardLink imagem={Top5} titulo="Top 5" informacao="" link="/top5"/>
