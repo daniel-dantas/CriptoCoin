@@ -1,13 +1,14 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from 'react'
 
-const carrousel = (props) => {
+
+export default (props) => {
 
     return (
         <div id="carrousel">
             <div className="slider">
                 <ul className="slides">
-                    {props.itens.map( item => {
-                        return (
+                    {props.itens.map( item => (
                             <li key={item.titulo}>
                                 <img src={props.imagem}/>
                                 <div className="caption center-align">
@@ -18,11 +19,10 @@ const carrousel = (props) => {
                                 </div>
                             </li>
                         )
-                    })}
+                    )}
+                    
                 </ul>
             </div>
         </div>
     )
 }
-
-export default carrousel

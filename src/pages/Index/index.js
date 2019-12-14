@@ -9,6 +9,7 @@ import Carrousel from '../../components/Carrousel'
 import searchImage from '../../assets/search.jpg'
 import EmAltaImage from '../../assets/em_alta.jpg'
 import Top5 from '../../assets/top_5.jpeg'
+
 class Index extends React.Component{
 
     constructor(){
@@ -20,32 +21,43 @@ class Index extends React.Component{
         }
     }
 
+
     componentDidMount = () => {
-        Moedas.read().then(response => {
+         this.loadMoedas()
+    }
+
+    loadMoedas = async() => {
+         await Moedas.read().then(response => {
             let moedas = response.data.data
             let moedaEmAlta = moedas.filter(moeda => {return moeda.changePercent24Hr > 0})[0]
             let moedaEmBaixa = moedas.filter(moeda => {return moeda.changePercent24Hr < 0})[0]
-            
+
             this.setState({
                 moedaEmAlta: {titulo: `${moedaEmAlta.name} está em alta`, conteudo: `${moedaEmAlta.name} teve um aumento de ${moedaEmAlta.changePercent24Hr} %`},
                 moedaEmBaixa: {titulo: `${moedaEmBaixa.name} está em baixa`, conteudo: `${moedaEmBaixa.name} teve uma queda de ${moedaEmBaixa.changePercent24Hr}%`}
             })
+            console.log(this.state.moedaEmAlta)
+            console.log(this.state.moedaEmBaixa)
         }).catch( erro => {
             console.log(erro)
         })
     }
 
 
-    // filtrandoMoedas = () => {
-        
-    // }
+    componentDidUpdate = () => {
 
+        setInterval(async () => {
+            await this.loadMoedas()
+        }, 15000)
+        
+        
+    }
 
     render(){
         return (
             <div className="grey darken-3">
                 {/* Carrousel */}
-                <Carrousel imagem={this.state.imagem} itens={[this.state.moedaEmAlta,this.state.moedaEmBaixa]}/>
+                <Carrousel imagem={this.state.imagem} itens={[this.state.moedaEmAlta, this.state.moedaEmBaixa]}/>
 
                 {/* Lista CardsLinks */}
 
