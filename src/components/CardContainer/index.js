@@ -1,5 +1,4 @@
 import React from 'react'
-import CardInfoMoeda from '../CardInfoMoeda'
 
 
 let card = (props) => {

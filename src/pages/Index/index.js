@@ -21,14 +21,7 @@ class Index extends React.Component{
     }
 
     componentDidMount = () => {
-        setInterval(() => {
-            this.filtrandoMoedas()
-        }, 2000)
-    }
-
-
-    filtrandoMoedas = async () => {
-        await Moedas.read().then(response => {
+        Moedas.read().then(response => {
             let moedas = response.data.data
             let moedaEmAlta = moedas.filter(moeda => {return moeda.changePercent24Hr > 0})[0]
             let moedaEmBaixa = moedas.filter(moeda => {return moeda.changePercent24Hr < 0})[0]
@@ -41,6 +34,11 @@ class Index extends React.Component{
             console.log(erro)
         })
     }
+
+
+    // filtrandoMoedas = () => {
+        
+    // }
 
 
     render(){
