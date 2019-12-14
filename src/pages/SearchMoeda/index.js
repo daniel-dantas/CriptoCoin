@@ -11,13 +11,19 @@ export default () => {
 
     useEffect(() => {
         Moedas.read().then(response => {
-            let moedas = response.data.data
-            setMoedas(moedas)
+
+            let responseMoedas = response.data.data
+            if(moedaSearch === ''){
+                setMoedas(responseMoedas)
+            }else{
+                setMoedas(responseMoedas.filter(moeda => {return moeda.name.startsWith(moedaSearch) || moeda.id.startsWith(moedaSearch)}))
+            }
+
         })
     })
 
     const getPesq = (event) => {
-        setMoedas(moedas.filter(moeda => {return moeda.name.startsWith(moedaSearch)}))
+        setMoedaSearch(event.target.value)
     }
 
     return (
