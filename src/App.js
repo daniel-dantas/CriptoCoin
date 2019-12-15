@@ -12,9 +12,9 @@ const App = () => {
     ])
 
     const [infFooter] = useState({
-        titulo: 'Titulo',
-        descricao: 'descricao aqui',
-        copy: 'Cripto Moedas'
+        titulo: 'CriptoCoin',
+        descricao: ' O cripto coin é uma ideia na qual o permite que o usuario possa ver informações sobre as inumeras cripto moedas em tempo real, sabendo quando houve alta e quando houve baixa.',
+        copy: 'Cripto Coin'
     })
 
 

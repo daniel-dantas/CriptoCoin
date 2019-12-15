@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import Moedas from '../../services/Moeda'
 
 // Componentes
@@ -10,71 +10,53 @@ import searchImage from '../../assets/search.jpg'
 import EmAltaImage from '../../assets/em_alta.jpg'
 import Top5 from '../../assets/top_5.jpeg'
 
-class Index extends React.Component{
-
-    constructor(){
-        super()
-        this.state = {
-            moedaEmAlta: {titulo: 'TITULO 1', conteudo: 'CONTEUDO 2'},
-            moedaEmBaixa: {titulo: 'TITULO 2', conteudo: 'CONTEUDO 2'},
-            imagem: searchImage
-        }
-    }
 
 
-    componentDidMount = () => {
-         this.loadMoedas()
-    }
-
-    loadMoedas = async() => {
-         await Moedas.read().then(response => {
-            let moedas = response.data.data
-            let moedaEmAlta = moedas.filter(moeda => {return moeda.changePercent24Hr > 0})[0]
-            let moedaEmBaixa = moedas.filter(moeda => {return moeda.changePercent24Hr < 0})[0]
-
-            this.setState({
-                moedaEmAlta: {titulo: `${moedaEmAlta.name} está em alta`, conteudo: `${moedaEmAlta.name} teve um aumento de ${moedaEmAlta.changePercent24Hr} %`},
-                moedaEmBaixa: {titulo: `${moedaEmBaixa.name} está em baixa`, conteudo: `${moedaEmBaixa.name} teve uma queda de ${moedaEmBaixa.changePercent24Hr}%`}
-            })
-            console.log(this.state.moedaEmAlta)
-            console.log(this.state.moedaEmBaixa)
-        }).catch( erro => {
-            console.log(erro)
-        })
-    }
+export default () => {
 
 
-    componentDidUpdate = () => {
+    const [moedaEmAlta, setMoedaEmAlta] = useState({titulo: 'TITULO 1', conteudo: 'CONTEUDO 2'})
+    const [moedaEmBaixa, setMoedaEmBaixa] = useState({titulo: 'TITULO 2', conteudo: 'CONTEUDO 2'})
 
-        setInterval(async () => {
-            await this.loadMoedas()
-        }, 15000)
-        
-        
-    }
 
-    render(){
-        return (
-            <div className="grey darken-3">
-                {/* Carrousel */}
-                <Carrousel imagem={this.state.imagem} itens={[this.state.moedaEmAlta, this.state.moedaEmBaixa]}/>
+    useEffect(() => {
+        loadMoedas()
+    })
 
-                {/* Lista CardsLinks */}
+    const loadMoedas = async() => {
+        await Moedas.read().then(response => {
+           let moedas = response.data.data
+           let moedaAlta = moedas.filter(moeda => {return moeda.changePercent24Hr > 0})[0]
+           let moedaBaixa = moedas.filter(moeda => {return moeda.changePercent24Hr < 0})[0]
 
-                <div className="row">
-                    <div className="col s12 m4">
-                        <CardLink imagem={Top5} titulo="Top 5" informacao="" link="/top5"/>
-                    </div>
-                    <div className="col s12 m4">
-                        <CardLink imagem={searchImage} titulo="Pesquisar Moeda" informacao="" link="/searchMoeda"/>
-                    </div>
-                    <div className="col s12 m4">
-                        <CardLink imagem={EmAltaImage} titulo="Moedas em alta" informacao="" link="/moedasEmAlta"/>
-                    </div>
+           setMoedaEmAlta({titulo: `${moedaAlta.name} está em alta`, conteudo: `${moedaAlta.name} teve um aumento de ${moedaEmAlta.changePercent24Hr} %`})
+           setMoedaEmBaixa({titulo: `${moedaBaixa.name} está em baixa`, conteudo: `${moedaBaixa.name} teve uma queda de ${moedaEmBaixa.changePercent24Hr}`})
+           console.log(moedaEmAlta)
+           console.log(moedaEmBaixa)
+       }).catch( erro => {
+           console.log(erro)
+       })
+   }
+
+
+    return (
+        <div className="grey darken-3">
+            {/* Carrousel */}
+            <Carrousel imagem={searchImage} itens={[moedaEmAlta, moedaEmBaixa]}/>
+
+            {/* Lista CardsLinks */}
+
+            <div className="row">
+                <div className="col s12 m4">
+                    <CardLink imagem={Top5} titulo="Top 5" informacao="" link="/top5"/>
+                </div>
+                <div className="col s12 m4">
+                    <CardLink imagem={searchImage} titulo="Pesquisar Moeda" informacao="" link="/searchMoeda"/>
+                </div>
+                <div className="col s12 m4">
+                    <CardLink imagem={EmAltaImage} titulo="Moedas em alta" informacao="" link="/moedasEmAlta"/>
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
-
-export default Index

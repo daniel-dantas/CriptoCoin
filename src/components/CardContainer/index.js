@@ -6,7 +6,7 @@ let card = (props) => {
 
     const isCard = () => {
         if(props.isCard){
-            return 'card grey darken-3'
+            return 'card grey darken-4 white-text'
         }else{
             return ''
         }
