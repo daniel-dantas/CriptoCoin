@@ -7,6 +7,8 @@ import Footer from './components/Footer'
 const App = () => {
 
     const [links] = useState([
+        {caminho: '/top5', nome: 'Top 5'},
+        {caminho: '/moedasEmAlta', nome: 'Moedas Em Alta'},
         {caminho: '/searchMoeda', nome: 'Pesquisar Moeda'},
         {caminho: '/sobre', nome: 'Sobre'},
     ])
