@@ -4,6 +4,8 @@ import NavBar from './components/NavBar'
 import Logo from './assets/logo.png'
 import Footer from './components/Footer'
 
+import {BrowserRouter} from "react-router-dom";
+
 const App = () => {
 
     const [links] = useState([
@@ -22,14 +24,18 @@ const App = () => {
 
     return (
         <div id="app" className="grey darken-3">
-            <NavBar urlLogo={Logo} links={links}/>
-            <Routes />
-            <Footer 
-                titulo={infFooter.titulo}
-                descricao={infFooter.descricao}
-                links={links}
-                copy={infFooter.copy}
-            />
+            <BrowserRouter>
+                <NavBar urlLogo={Logo} links={links}/>
+                
+                <Routes />
+                <Footer 
+                    titulo={infFooter.titulo}
+                    descricao={infFooter.descricao}
+                    links={links}
+                    copy={infFooter.copy}
+                />
+            </BrowserRouter>
+            
         </div>
     )
     

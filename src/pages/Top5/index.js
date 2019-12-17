@@ -31,6 +31,8 @@ class Top5 extends React.Component{
         setInterval(this.loadMoedas(), 15000);
     }
 
+    componentWillUnmount()
+
     render(){
         return (
             <div id="top5">

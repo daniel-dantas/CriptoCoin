@@ -1,5 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react'
+import {Link} from 'react-router-dom'
+
 import './style.css'
 
 const cardlink = (props) => {
@@ -11,7 +13,7 @@ const cardlink = (props) => {
                     <div className="card">
                         <div className="card-image">
                             <img id="imagem-link" src={props.imagem}/>
-                            <a className="btn-floating halfway-fab waves-effect waves-light red" href={props.link}><i className="material-icons">call_made</i></a>
+                            <Link className="btn-floating halfway-fab waves-effect waves-light red" to={props.link}><i className="material-icons">call_made</i></Link>
 
                         </div>
                         <div className="card-content grey darken-4"> 

@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
 const footer = (props) => {
 
     return (
@@ -14,9 +14,9 @@ const footer = (props) => {
                         <div className="col l4 offset-l2 s12">
                             <h5 className="white-text">Links</h5>
                             <ul>
-                                <li><a className="grey-text text-lighten-3" href="/">Home</a></li>
+                                <li><Link className="grey-text text-lighten-3" to="/">Home</Link></li>
                                 {props.links.map(link => (
-                                    <li key={link.nome}><a className="grey-text text-lighten-3" href={link.caminho}>{link.nome}</a></li>
+                                    <li key={link.nome}><Link className="grey-text text-lighten-3" to={link.caminho}>{link.nome}</Link></li>
                                 ))}
                             </ul>
                         </div>

@@ -1,6 +1,5 @@
 import React,{useState, useEffect} from 'react'
 import Moedas from '../../services/Moeda'
-
 // Componentes
 import CardLink from '../../components/CardLink'
 import Carrousel from '../../components/Carrousel'
@@ -31,10 +30,9 @@ export default () => {
 
            setMoedaEmAlta({titulo: `${moedaAlta.name} está em alta`, conteudo: `${moedaAlta.name} teve um aumento de ${moedaEmAlta.changePercent24Hr} %`})
            setMoedaEmBaixa({titulo: `${moedaBaixa.name} está em baixa`, conteudo: `${moedaBaixa.name} teve uma queda de ${moedaEmBaixa.changePercent24Hr}`})
-           console.log(moedaEmAlta)
-           console.log(moedaEmBaixa)
+           
        }).catch( erro => {
-           console.log(erro)
+           console.log('Erro')
        })
    }
 
